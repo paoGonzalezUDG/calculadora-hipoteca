@@ -1,0 +1,247 @@
+/* style.css (versión de 2 columnas responsive) */
+@font-face {
+    font-family: 'pp_neue_montrealbook';
+    src: url('/fonts/ppneuemontreal-book-webfont.woff2') format('woff2'),
+         url('/fonts/ppneuemontreal-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'pp_neue_montrealbold';
+    src: url('/fonts/ppneuemontreal-bold-webfont.woff2') format('woff2'),
+         url('/fonts/ppneuemontreal-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'pp_neue_montrealbook';
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.f-bold{font-family: 'pp_neue_montrealbold';}
+.w-100{width: 100%;}
+@media (min-width: 576px) {
+    .d-sm-flex{display: flex;}
+}
+.align-items-baseline{align-items: baseline;}
+.justify-content-end{justify-content: end;}
+.opacity{opacity: 0!important;display: none!important;}
+.main-container {
+    text-align: center;
+    width: 100%;
+    max-width: 1320px;
+}
+
+h1 {
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+}
+
+.calculator-container {
+    background-color: #ffffff;
+    border-radius: 0;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.result-display {
+    background-color: #000000;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 30%;
+    text-align: center;
+    transition: width 0.3s ease;
+}
+
+.payment-amount {
+    font-size: 2.5rem;
+    color: #DFA768;
+    margin-bottom: 7px;
+}
+
+.details-text {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.input-fields {
+    padding: 2rem;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-content: start;
+    transition: width 0.3s ease;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    color: #000;
+    text-align: left;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+hr{width: 100%;background: #fff;}
+.calculated-field {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    margin: 0;
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.input-static {
+    background-color: transparent!important;
+    border: none!important;
+    padding: 0!important;
+    min-height: 30px!important;
+}
+
+.equity-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.equity-controls .calculated-field {
+    flex-grow: 1;
+}
+
+.percentage-box {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1rem;
+    border-radius: 0;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: center;
+    height: 51px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #946632;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cta-button {
+    grid-column: 1 / -1;
+    background-color: #a38d6a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background-color: #8c7654;
+}
+
+/* --- ESTILOS RESPONSIVE --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .calculator-container {
+        flex-direction: column;
+    }
+
+    .result-display,
+    .input-fields {
+        width: auto;
+    }
+
+    .result-display {
+        padding: 2rem 1.5rem;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .input-fields {
+        padding: 1.5rem;
+        border-radius: 0 0 12px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-amount {
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .input-fields {
+        padding: 1.5rem 1rem;
+    }
+}
+#total-annual-costs-display{font-size: 27px;margin: 15px 0 0 10px;}
