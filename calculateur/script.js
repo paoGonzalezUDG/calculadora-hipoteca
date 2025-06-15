@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. CONSTANTES Y VALORES INICIALES ---
-    const PROPERTY_PRICE        = 800000;
+    const PROPERTY_PRICE        = costo_propiedad;
     const INTEREST_RATE         = 1.50;
     const MIN_EQUITY_PERCENT    = 20;
     const MAINTENANCE_RATE      = 0.01;

@@ -1,10 +1,39 @@
+<?php
+   if(!isset($_GET['id_propiedad']) || empty($_GET['id_propiedad'])) {
+       $costo_propiedad = 800000;
+   }elseif($_GET['id_propiedad'] == 1) {
+       $costo_propiedad = 708800;//Lot 1 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 2) {
+       $costo_propiedad = 660800;//Lot 2 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 3) {
+       $costo_propiedad = 514400;//Lot 3 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 4) {
+       $costo_propiedad = 1082400;//Lot 4 – Appartement Echallens               
+   }elseif($_GET['id_propiedad'] == 5) {
+       $costo_propiedad = 943200;//Lot 5 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 6) {
+       $costo_propiedad = 596800;//Lot 6 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 7) {
+       $costo_propiedad = 958400;//Lot 7 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 8) {
+       $costo_propiedad = 783200;//Lot 8 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 9) {
+       $costo_propiedad = 943200;//Lot 9 – Appartement Echallens
+   }elseif($_GET['id_propiedad'] == 10) {
+       $costo_propiedad = 650000;//Grenade
+   }else{
+            $costo_propiedad = 800000;//Petit Château
+        } ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Hipoteca</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/calculateur/style.css">
+    <script>
+        let costo_propiedad = "<?php echo floatval($costo_propiedad); ?>";
+    </script>
 </head>
 <body>
 
@@ -66,7 +95,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/calculateur/script.js"></script>
     <script>
         function sendHeight() {
             const height = document.body.scrollHeight;

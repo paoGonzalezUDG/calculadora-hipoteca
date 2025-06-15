@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# ----------------------------------------------------------------------
+Options +FollowSymLinks
+RewriteBase /calculateur/
+# ----------------------------------------------------------------------
+# Default page
+# ----------------------------------------------------------------------
+DirectoryIndex index.php?id_propiedad=$1
+# ----------------------------------------------------------------------
+# Rewrite rules
+# ----------------------------------------------------------------------
+RewriteRule ^biens-immobiliers/([0-9]+)?$ index.php?id_propiedad=$1 [NC,L]
