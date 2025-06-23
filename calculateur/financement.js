@@ -1,17 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. CONSTANTES Y VALORES INICIALES ---
-    const PROPERTY_PRICE        = costo_propiedad;
+    const MIN_PROPERTY_PRICE        = 100000;
+    const MAX_PROPERTY_PRICE        = costo_propiedad;
+    const INITIAL_PROPERTY_PRICE    = costo_propiedad;
+    const PRICE_STEP                = 0;
     
-    const INTEREST_RATE         = 1.50; // La tasa de interés sigue siendo fija
-    const MIN_EQUITY_PERCENT    = 20;
-    const MAINTENANCE_RATE      = 0.01;
+    const INTEREST_RATE             = 1.50; // La tasa de interés sigue siendo fija
+    const MIN_EQUITY_PERCENT        = 20;
+    const MAINTENANCE_RATE          = 0.01;
 
     // --- 2. ELEMENTOS DEL DOM ---
-    const equitySlider          = document.getElementById('equity-slider');
-    const equityAmountDisplay   = document.getElementById('equity-amount-display'); // NUEVO
-    
+    const propertyPriceSlider       = document.getElementById('property-price-slider');
     const propertyPriceDisplay      = document.getElementById('property-price-display');
+
+    const equitySlider              = document.getElementById('equity-slider');
+    const equityAmountDisplay       = document.getElementById('equity-amount-display'); // NUEVO
+
     const interestRateDisplay       = document.getElementById('interest-rate-display');
     const loanTermInput             = document.getElementById('loan-term');
     const equityPercentageDisplay   = document.getElementById('equity-percentage');
@@ -28,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. FUNCIÓN DE INICIALIZACIÓN ---
     function initializeCalculator() {
-        propertyPriceDisplay.textContent    = `CHF ${formatNumber(PROPERTY_PRICE)}`;
+        // CAMBIO: Configurar el slider de precio
+        propertyPriceSlider.min     = MIN_PROPERTY_PRICE;
+        propertyPriceSlider.max     = MAX_PROPERTY_PRICE;
+        propertyPriceSlider.step    = PRICE_STEP;
+        propertyPriceSlider.value   = INITIAL_PROPERTY_PRICE;
+        
         interestRateDisplay.textContent     = `${INTEREST_RATE.toFixed(2)} %`;
         equitySlider.value                  = MIN_EQUITY_PERCENT;
         equityLabel.textContent             = `Fonds propres* (${MIN_EQUITY_PERCENT}%)`;
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. FUNCIÓN PRINCIPAL DE CÁLCULO ---
     function calculateMortgage() {
-        const price                 = PROPERTY_PRICE;
+        const price                 = parseFloat(propertyPriceSlider.value);
         const interestRate          = INTEREST_RATE;
         const termYears             = parseInt(loanTermInput.value, 10) || 0;
         
@@ -65,6 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 5. SINCRONIZACIÓN (SIMPLIFICADA) ---
+    // CAMBIO: Nueva función para sincronizar el precio
+    function syncPrice() {
+        const price = parseFloat(propertyPriceSlider.value);
+        propertyPriceDisplay.textContent = `CHF ${formatNumber(price)}`;
+        // Cuando el precio cambia, la equidad también debe recalcularse
+        syncEquity();
+    }
+
     function syncEquity() {
         // Esta función ahora solo necesita actualizar el % y llamar al cálculo principal
         const percentage                    = parseFloat(equitySlider.value);
@@ -73,10 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 6. EVENT LISTENERS (SIMPLIFICADOS) ---
+    propertyPriceSlider.addEventListener('input', syncPrice);
     loanTermInput.addEventListener('change', calculateMortgage);
     equitySlider.addEventListener('input', syncEquity);
 
     // --- 7. EJECUCIÓN INICIAL ---
     initializeCalculator();
+    syncPrice(); // Usamos syncPrice como punto de partida para el primer cálculo
     syncEquity(); // Llama a la función simplificada para el cálculo inicial
 });

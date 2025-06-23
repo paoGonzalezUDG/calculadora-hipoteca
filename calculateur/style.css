@@ -20,11 +20,18 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
     padding: 1rem;
     box-sizing: border-box;
+}
+::selection {
+  background: #CFA878; /* Fondo dorado */
+  color: #ffffff;      /* Texto blanco */
+}
+
+::-moz-selection {
+  background: #CFA878;
+  color: #ffffff;
 }
 .f-bold{font-family: 'pp_neue_montrealbold';}
 .w-100{width: 100%;}
@@ -97,7 +104,7 @@ h1 {
 }
 
 label {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     margin-bottom: 0;
     color: #000;
     text-align: left;
@@ -217,7 +224,6 @@ input[type="range"]::-webkit-slider-thumb {
 
     .result-display {
         padding: 2rem 1.5rem;
-        border-radius: 12px 12px 0 0;
     }
 
     .input-fields {
@@ -229,6 +235,10 @@ input[type="range"]::-webkit-slider-thumb {
 @media (max-width: 480px) {
     .input-fields {
         grid-template-columns: 1fr;
+    }
+
+    .form-group:has(#total-annual-costs-display) {
+        grid-column: 1 / -1;
     }
     
     .payment-amount {
@@ -245,3 +255,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
 }
 #total-annual-costs-display{font-size: 27px;margin: 15px 0 0 10px;}
+/* NUEVO: Estilo para el slider de precio */
+.price-slider {
+    margin-top: 1rem;
+}

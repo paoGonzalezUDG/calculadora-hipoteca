@@ -12,3 +12,4 @@ DirectoryIndex index.php?id_propiedad=$1
 # Rewrite rules
 # ----------------------------------------------------------------------
 RewriteRule ^biens-immobiliers/([0-9]+)?$ index.php?id_propiedad=$1 [NC,L]
+RewriteRule ^financement/([0-9]+)?$ financement.php?id_propiedad=$1 [NC,L]

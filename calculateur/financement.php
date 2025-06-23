@@ -41,11 +41,13 @@
             <div class="calculator-container">
                 <!-- Sección de Entradas (Derecha) -->
                 <div class="input-fields">
-                    <!-- Campos Fijos -->
+                    <!-- Campo dinamico -->
                     <div class="form-group">
                         <label class="f-bold">Precio de compra</label>
-                        <p id="property-price-display" class="calculated-field input-static"></p>
+                        <p id="property-price-display" class="calculated-field"></p>
+                        <input type="range" id="property-price-slider" class="price-slider">
                     </div>
+                    <!-- Campos Fijos -->
                     <div class="form-group">
                         <label class="f-bold">Tasa de interés</label>
                         <p id="interest-rate-display" class="calculated-field input-static"></p>
@@ -95,7 +97,7 @@
             </div>
         </div>
 
-        <script src="/calculateur/script.js"></script>
+        <script src="/calculateur/financement.js"></script>
         <script>
             function sendHeight() {
                 const height = document.body.scrollHeight;
